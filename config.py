@@ -1,6 +1,0 @@
-customhost = "employee.cmilbn5pgstu.us-east-1.rds.amazonaws.com"
-customuser = "aws_user"
-custompass = "aws_user"
-customdb = "employee"
-custombucket = "yeechooili-employee"
-customregion = "us-east-1"

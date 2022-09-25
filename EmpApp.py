@@ -26,20 +26,9 @@ def home():
     return render_template('AddEmp.html')
 
 
-@app.route("/about", methods=['GET','POST'])
+@app.route("/about", methods=['POST'])
 def about():
     return render_template('AboutUs.html')
-
-@app.route("/getemp", methods=['GET','POST'])
-def showEmp():
-    return render_template('GetEmp.html')
-
-# @app.route("/getemp", methods=['GET','POST'])
-# def showEmp():
-#     emp_id = request.form['emp_id']
-#     cursor = db_conn.cursor()
-#     select_sql = "SELECT * FROM employee where emp_id = emp_id"
-    
 
 
 @app.route("/addemp", methods=['POST'])

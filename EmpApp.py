@@ -37,7 +37,6 @@ def getEmp():
 @app.route("/fetchdata", methods=['GET','POST'])
 def GetEmp():
     emp_id = request.form['emp_id']
-    emp_image_file = request.files['emp_image_file']
     
     select_sql = "SELECT * from employee where emp_id = %s"
     cursor = db_conn.cursor()

@@ -53,7 +53,7 @@ def GetEmp():
 
     finally:
         cursor.close()
-    return render_template('GetEmpOutput.html', emp_id=emp_id)
+    return render_template('GetEmpOutput.html', id=emp_id)
     
 
 @app.route("/addemp", methods=['POST'])

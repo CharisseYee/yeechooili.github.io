@@ -45,7 +45,7 @@ def GetEmp():
 
         cursor.execute(select_sql, (emp_id))
         result = cursor.fetchone()
-        emp_id, first_name, last_name, pri_skill, location =result
+        emp_id, first_name, last_name, pri_skill, location, emp_image_file =result
         
         # Retrieve image file in S3 #
         emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
@@ -53,7 +53,8 @@ def GetEmp():
 
     finally:
         cursor.close()
-    return render_template('GetEmpOutput.html', id=emp_id, fname=first_name, lname=last_name, interest=pri_skill, location=location)
+    return render_template('GetEmpOutput.html', id=emp_id, fname=first_name, lname=last_name, interest=pri_skill, location=location,
+                           image_url= emp_image_file )
     
 
 @app.route("/addemp", methods=['POST'])

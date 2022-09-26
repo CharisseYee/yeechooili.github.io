@@ -36,11 +36,34 @@ def getEmp():
 
 @app.route("/fetchdata", methods=['GET','POST'])
 def fetchdata(AddEmp):
-    emp_id = AddEmp.emp_id
     select_emp = "SELECT * from employee where emp_id = %s"
     cursor = db_conn.cursor()
     cursor.execute(select_emp, emp_id)
     return render_template('GetEmpOutput.html')
+
+@app.route("/fetchdata", methods=['POST'])
+def GetEmp():
+    emp_id = request.form['emp_id']
+    
+    select_sql = "SELECT * from employee where emp_id = %s"
+    cursor = db_conn.cursor()
+
+    if emp_image_file.filename == "":
+        return "Please select a file"
+
+    try:
+
+        cursor.execute(select_sql, (emp_id))
+        result = cursor.fetchone()
+        emp_id, first_name, last_name, pri_skill, location =result
+        
+        # Retrieve image file in S3 #
+        emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
+        s3 = boto3.resource('s3')
+
+    finally:
+        cursor.close()
+    return render_template('GetEmpOutput.html', name=emp_name)
     
 
 @app.route("/addemp", methods=['POST'])

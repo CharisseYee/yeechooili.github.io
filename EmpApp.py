@@ -41,9 +41,6 @@ def GetEmp():
     select_sql = "SELECT * from employee where emp_id = %s"
     cursor = db_conn.cursor()
 
-    if emp_image_file.filename == "":
-        return "Please select a file"
-
     try:
 
         cursor.execute(select_sql, (emp_id))
@@ -56,7 +53,7 @@ def GetEmp():
 
     finally:
         cursor.close()
-    return render_template('GetEmpOutput.html', name=emp_name)
+    return render_template('GetEmpOutput.html', emp_id=emp_id)
     
 
 @app.route("/addemp", methods=['POST'])

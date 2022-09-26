@@ -30,7 +30,7 @@ def home():
 def about():
     return render_template('AboutUs.html')
 
-@app.route("/getemp", methods=['GET'])
+@app.route("/getemp", methods=['GET','POST'])
 def getEmp():
     return render_template('GetEmp.html')
 

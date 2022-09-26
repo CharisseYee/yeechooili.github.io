@@ -45,7 +45,7 @@ def GetEmp():
 
         cursor.execute(select_sql, (emp_id))
         result = cursor.fetchone()
-        emp_id, first_name, last_name, pri_skill, location, object_url =result
+        emp_id, first_name, last_name, pri_skill, location =result
         
         # Retrieve image file in S3 #
         emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
